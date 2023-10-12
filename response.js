@@ -7,7 +7,7 @@ const port = process.env.PORT || 9999;
 
 app.use(express.static("../chatbot"));
 
-app.get('/chatbot', (req, res) => {
+app.get('/', (req, res) => {
     const userMessage = req.query.message; // Retrieve the user's message from the query string
     const chatbot = spawn('python',['./chatbot.py', userMessage]);
     let botResponse = '';

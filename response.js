@@ -3,7 +3,7 @@ const spawn = require('child_process').spawn;
 
 
 const app = express();
-const port = 9999;
+const port = process.env.PORT || 9999;
 
 app.use(express.static("../chatbot"));
 

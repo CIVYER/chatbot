@@ -1,0 +1,76 @@
+body,
+html{
+    height: 100vh;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    gap: .5em;
+}
+
+/* header ng chatbot */
+.chatHeader{
+    height: 10%;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+/* body kung saan lumilitaw mga messages */
+.chatBody{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* eto class na inaadd ng javascript tuwing may msg and response*/
+.userMSG, .botMSG{
+    overflow-wrap: break-word;
+    border-radius: 10px;
+    max-width: 43%;
+    height: max-content;
+    line-height: 20px;
+    padding: 0.5em;
+}
+
+/* design ng message ni user */
+.userMSG{
+    align-self: flex-end;
+    background-color: aqua;
+    margin-right: 1em;
+}
+/* design ng message ni bot */
+.botMSG{
+    align-self: flex-start;
+    background-color: grey;
+    margin-left: 1em;
+}
+
+.inpt-btnContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 0.2em;
+}
+
+#userMSG{
+    position: relative;
+    flex-grow: 1;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    outline: 0;
+}
+
+#btnSend{
+    position: absolute;
+    right: 1.23em;
+    padding: 0.7em 1em;
+}

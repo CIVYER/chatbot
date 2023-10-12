@@ -1,11 +1,12 @@
 const express = require('express');
+var cors = require('cors')
 const spawn = require('child_process').spawn;
 
 
 const app = express();
 const port = process.env.PORT || 9999;
 
-app.use(express.static("../chatbot"));
+app.use(cors());
 
 app.get('/', (req, res) => {
     const userMessage = req.query.message; // Retrieve the user's message from the query string

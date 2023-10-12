@@ -6,7 +6,7 @@ const spawn = require('child_process').spawn;
 const app = express();
 const port = process.env.PORT || 9999;
 
-app.use(cors());
+app.use(cors({ origin: ['http://localhost:9999', 'http://apichat-m56p.onrender.com', 'https://apichat-m56p.onrender.com'], credentials: true }))
 
 app.get('/', (req, res) => {
     const userMessage = req.query.message; // Retrieve the user's message from the query string

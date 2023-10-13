@@ -24,7 +24,7 @@ function renderMSG(){
         setScrollPos();
         
         setTimeout(() => {
-            fetch(`/chatbot?message=${encodeURIComponent(msg)}`)
+            fetch(`https://apichat-m56p.onrender.com/?message=${encodeURIComponent(msg)}`)
             .then(response => response.text())
             .then(data => {
                 renderChat(data,'bot');

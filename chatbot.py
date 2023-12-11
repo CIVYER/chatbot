@@ -25,10 +25,8 @@ try:
         elif when == "yesterday":
             print(response_list.yesterday())
     
-    elif intent == "askingTime":
+    if intent == "askingTime":
         print(response_list.askingDateNTime())
-    else:
-        print("No response yet but intent is:", intent)
         
         
 except:

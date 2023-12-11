@@ -1,26 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
 body,
 html{
-    height: 100vh;
+    height: 100%;
 }
 body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     margin: 0;
     gap: .5em;
+    background-color: #800000;
+
 }
 
 /* header ng chatbot */
 .chatHeader{
     height: 10%;
     width: 100%;
+
+    background-color: #FFBD59;
+
+    display: flex;
+
+    align-items: center;
+
     border-bottom: 1px solid black;
-    border-top: 1px solid black;
+
+    /* cursor: pointer; */
 }
+
+#botName{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#botLogo{
+    object-fit: contain;
+    height: 100%;
+}
+
+
+
 
 /* body kung saan lumilitaw mga messages */
 .chatBody{
+    position: relative;
+
+
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -42,17 +74,19 @@ body{
 /* design ng message ni user */
 .userMSG{
     align-self: flex-end;
-    background-color: aqua;
+    background-color: #5f9cec;
     margin-right: 1em;
 }
 /* design ng message ni bot */
 .botMSG{
     align-self: flex-start;
-    background-color: grey;
+    background-color: #FFCF87;
     margin-left: 1em;
 }
 
+/* container ng input box saka send btn */
 .inpt-btnContainer{
+    
     display: flex;
     width: 100%;
     justify-content: space-evenly;
@@ -60,8 +94,13 @@ body{
     padding-bottom: 0.2em;
 }
 
-#userMSG{
+/* design ng input box */
+.inpt-btnContainer{
     position: relative;
+}
+#userMSG{
+    background-color: #FFBD59;
+
     flex-grow: 1;
     margin-left: 1em;
     margin-right: 1em;
@@ -69,8 +108,59 @@ body{
     outline: 0;
 }
 
+/* design ng btn send */
 #btnSend{
-    position: absolute;
-    right: 1.23em;
+    background-color: #FFBD59;
+
+    /* position: absolute; */
+    /* right: 1.23em; */
     padding: 0.7em 1em;
+    margin-right: 1em;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+}
+
+#btnSend:active{
+    background-color: #800000;
+}
+
+@keyframes chatting {
+    50%{
+        bottom: 4.5em;
+    }
+    100%{
+        bottom: 4em;
+    }
+    
+}
+
+#cirCon{
+    visibility: hidden;
+}
+
+.circle{
+    position: absolute;
+    bottom: 0;
+    /* background-color: black; */
+    height: 60%;
+    bottom: 4em;
+    left: .5em;
+    /* visibility: hidden; */
+    z-index: -100;
+}
+#circle1{
+    animation: chatting 500ms 500ms infinite;
+    
+}
+
+#circle2{
+    left: 2.25em;
+    animation: chatting 500ms 600ms infinite;
+    
+}
+#circle3{
+    animation: chatting 500ms 700ms infinite;
+    left: 4em;
+
 }

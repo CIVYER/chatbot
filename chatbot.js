@@ -75,65 +75,73 @@ function renderChat(msg, type){
         div.classList.add(classname);
 
         let action = msg.action;
-        let response = String(msg.response.text).toLowerCase();
-        console.log(action);
-        console.log(response);
-        if(action == 'getTimeDay'){
-            if(response == 'today' || response == 'time'){
-                response = 'date and time today';
+        try{
+            let response = String(msg.response.text).toLowerCase();
+            console.log(action);
+            console.log(response);
+            if(action == 'getTimeDay'){
+                if(response == 'today' || response == 'time'){
+                    response = 'date and time today';
+                }
+                else if(response == 'yesterday'){
+                    response = 'date yesterday';
+                }
+                else if(response == 'tomorrow'){
+                    response = 'date tomorrow';
+                }
+                txtNode = document.createTextNode(response);
+                div.append(txtNode);
+                chatBody.append(div);
             }
-            else if(response == 'yesterday'){
-                response = 'date yesterday';
+
+            if(action == 'getFreeRoom'){
+                response = response.split('-----');
+                let dept = window.localStorage.getItem('dept');
+                fetch(`http://localhost/gr2-3H/chatbot/chatbot.php?action=${action}&startTime=${response[0]}&endTime=${response[1]}&dept=${dept}`)
+                .then(response => response.text())
+                .then((data) =>{
+                    var list = data.split(',,,,,');
+                    console.log(data);
+                    window.localStorage.setItem('over2', 'stop');
+                    window.localStorage.setItem('currDept', list[0])
+                    window.localStorage.setItem('currRoom', list[1])
+                    window.localStorage.setItem('currOccOption', list[2])
+                    
+                    
+                    window.localStorage.setItem('currSect', '---')
+                    window.localStorage.setItem('currCourse', '---')
+                    if(list[0] != ''){
+                        var link = document.createElement('a')
+                        link.href = 'http://localhost/gr2-3H/pages/classSched.html'
+                        link.innerHTML = 'Click here';
+                        link.target = '_blank';
+                        txtNode = document.createTextNode("Your room is prepared just ");
+                        div.append(txtNode);
+                        div.append(link);
+                        chatBody.append(div);
+                    }
+                    else{
+                        txtNode = document.createTextNode("Can't find any room between the time you have entered");
+                        div.append(txtNode);
+                        chatBody.append(div);
+                    }
+                })
+
+
             }
-            else if(response == 'tomorrow'){
-                response = 'date tomorrow';
+
+            if(action == 'none'){
+                txtNode = document.createTextNode(response);
+                div.append(txtNode);
+                chatBody.append(div);
             }
-            txtNode = document.createTextNode(response);
+        }
+        catch{            
+            txtNode = document.createTextNode('An error has occured, please take a screenshot and contact an admin');
             div.append(txtNode);
             chatBody.append(div);
         }
-
-        if(action == 'getFreeRoom'){
-            response = response.split('-----');
-            let dept = window.localStorage.getItem('dept');
-            fetch(`http://localhost/gr2-3H/chatbot/chatbot.php?action=${action}&startTime=${response[0]}&endTime=${response[1]}&dept=${dept}`)
-            .then(response => response.text())
-            .then((data) =>{
-                var list = data.split(',,,,,');
-                console.log(data);
-                window.localStorage.setItem('over2', 'stop');
-                window.localStorage.setItem('currDept', list[0])
-                window.localStorage.setItem('currRoom', list[1])
-                window.localStorage.setItem('currOccOption', list[2])
-                
-                
-                window.localStorage.setItem('currSect', '---')
-                window.localStorage.setItem('currCourse', '---')
-                if(list[0] != ''){
-                    var link = document.createElement('a')
-                    link.href = 'http://localhost/gr2-3H/pages/classSched.html'
-                    link.innerHTML = 'Click here';
-                    link.target = '_blank';
-                    txtNode = document.createTextNode("Your room is prepared just ");
-                    div.append(txtNode);
-                    div.append(link);
-                    chatBody.append(div);
-                }
-                else{
-                    txtNode = document.createTextNode("Can't find any room between the time you have entered");
-                    div.append(txtNode);
-                    chatBody.append(div);
-                }
-            })
-
-
-        }
-
-        if(action == 'none'){
-            txtNode = document.createTextNode(response);
-            div.append(txtNode);
-            chatBody.append(div);
-        }
+        
     }
     else{
         txtNode = document.createTextNode(msg);

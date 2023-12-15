@@ -76,7 +76,7 @@ function renderChat(msg, type){
 
         let action = msg.action;
         try{
-            let response = String(msg.response.text).toLowerCase();
+            // let response = String(msg.response.text).toLowerCase();
             console.log(action);
             console.log(response);
 

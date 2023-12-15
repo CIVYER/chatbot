@@ -81,19 +81,19 @@ function renderChat(msg, type){
             // console.log(response);
 
             if(action == 'askHelp'){
-                txtNode = document.createTextNode("-Looking for vacant rooms? Start by typing \"vacant rooms?\"");
+                txtNode = document.createTextNode("-Looking for vacant rooms? Start by typing \"vacant rooms?\".");
                 div.append(txtNode);
                 div.append(document.createElement('br'));
                 div.append(document.createElement('br'));
-                txtNode = document.createTextNode("-You can also ask for time today and date today, tomorrow, and yesterday");
+                txtNode = document.createTextNode("-You can also ask for time today and date today, tomorrow, and yesterday.");
                 div.append(txtNode);
                 div.append(document.createElement('br'));
                 div.append(document.createElement('br'));
-                txtNode = document.createTextNode("-Lazy to move your mouse, just type \"go to *page name*\" to go to the page you desire");
+                txtNode = document.createTextNode("-Lazy to move your mouse, just type \"go to *page name*\" to go to the page you desire.");
                 div.append(txtNode);
                 div.append(document.createElement('br'));
                 div.append(document.createElement('br'));
-                txtNode = document.createTextNode("-Want to know the current event just type \"Current Event\"");
+                txtNode = document.createTextNode("-Want to know the current event just type \"Current Event\".");
                 div.append(txtNode);
                 div.append(document.createElement('br'));
                 div.append(document.createElement('br'));

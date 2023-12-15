@@ -77,8 +77,8 @@ function renderChat(msg, type){
         let action = msg.action;
         try{
             // let response = String(msg.response.text).toLowerCase();
-            console.log(action);
-            console.log(response);
+            // console.log(action);
+            // console.log(response);
 
             if(action == 'askHelp'){
                 txtNode = document.createTextNode("-Looking for vacant rooms? Start by typing \"vacant rooms?\"");

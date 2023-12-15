@@ -79,10 +79,32 @@ function renderChat(msg, type){
             let response = String(msg.response.text).toLowerCase();
             console.log(action);
             console.log(response);
-            txtNode = document.createTextNode(action);
-            div.append(txtNode);
-            div.classList.add(classname);
-            chatBody.append(div);
+
+            if(action == 'askHelp'){
+                txtNode = document.createTextNode("-Looking for vacant rooms? Start by typing \"vacant rooms?\"");
+                div.append(txtNode);
+                div.append(document.createElement('br'));
+                div.append(document.createElement('br'));
+                txtNode = document.createTextNode("-You can also ask for time today and date today, tomorrow, and yesterday");
+                div.append(txtNode);
+                div.append(document.createElement('br'));
+                div.append(document.createElement('br'));
+                txtNode = document.createTextNode("-Lazy to move your mouse, just type \"go to *page name*\" to go to the page you desire");
+                div.append(txtNode);
+                div.append(document.createElement('br'));
+                div.append(document.createElement('br'));
+                txtNode = document.createTextNode("-Want to know the current event just type \"Current Event\"");
+                div.append(txtNode);
+                div.append(document.createElement('br'));
+                div.append(document.createElement('br'));
+                chatBody.append(div);
+            }
+            else{
+                txtNode = document.createTextNode(action);
+                div.append(txtNode);
+                div.classList.add(classname);
+                chatBody.append(div);
+            }
             // if(action == 'getTimeDay'){
             //     if(response == 'today' || response == 'time'){
             //         response = 'date and time today';

@@ -162,7 +162,8 @@ function renderChat(msg, type){
             //     chatBody.append(div);
             // }
         }
-        catch{            
+        catch (error){
+            console.log(error);
             txtNode = document.createTextNode('An error has occured, please take a screenshot and contact an admin');
             div.append(txtNode);
             chatBody.append(div);
